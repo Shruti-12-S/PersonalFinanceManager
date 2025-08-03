@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goals</title>
+  <link rel="stylesheet" href="goal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <h2 style="font-size: 30px;">Budget Buddy</h2>
+    <hr>
+    </hr>
+
+    <div class="list">
+      <ul>
+        <li><a href="dash.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-chart-pie"></i>
+            Dashboard</a></li>
+        <li><a href="accounts.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-building-columns"></i> Accounts</a></li>
+        <li><a href="transactions.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-arrow-right-arrow-left"></i> Transactions</a></li>
+        <li><a href="cat.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-tags"></i>
+            Categories</a></li>
+        <li><a href="budget.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-bullseye"></i>
+            Budgets</a></li>
+        <li class="active"><a href="goal.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-flag"></i> Goals</a>
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <div class="user-info">
+      <div class="left-column">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+      </div>
+
+      <div class="user-details">
+        <p><span id="username"></span></p>
+        <p><span id="email"></span></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Goals</h1>
+      <button class="btn">+ New Transaction</button>
+    </div>
+
+    <div class="category">
+      <h2>Financial Goals</h2>
+      <button class="btn">+ New Goal</button>
+    </div>
+
+    <div id="goalCardsContainer" class="goal-cards-container"></div>
+  </div>
+
+  <!-- Transaction Modal -->
+  <div id="transactionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add New Transaction</h2>
+      <form id="transactionForm">
+        <label>Date:</label>
+        <input type="date" name="date" required />
+
+        <label>Description:</label>
+        <input type="text" name="description" required />
+
+        <label>Category:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Select category</option>
+        </select>
+
+        <label for="account">Account</label>
+        <select id="account" name="account" required>
+          <option value="" disabled selected>Select account</option>
+        </select>
+
+        <label>Amount:</label>
+        <input type="number" name="amount" step="0.01" required />
+
+        <label>Type:</label>
+        <select name="type" required>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Add Transaction</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Goal Modal -->
+  <div id="goalModal" class="modal">
+    <div class="modal-content">
+      <span id="closeGoalModal" class="close">&times;</span>
+      <h2>New Goal</h2>
+      <form id="goalForm">
+        <label for="goalName">Goal Name:</label>
+        <input type="text" id="goalName" name="goalName" required />
+
+        <label for="targetDate">Target Date:</label>
+        <input type="date" id="targetDate" name="targetDate" required />
+
+        <label for="goalCategory">Goal Category:</label>
+        <select name="goalCategory" id="goalCategory" required>
+          <option value="" disabled selected>Select category</option>
+        </select>
+
+
+        <label for="targetAmount">Target Amount (₹):</label>
+        <input type="number" id="targetAmount" name="targetAmount" min="0" required />
+
+        <button type="submit" class="submit-btn">Save Goal</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="goal.js"></script>
+</body>
+</html>

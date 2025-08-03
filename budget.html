@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget</title>
+  <link rel="stylesheet" href="budget.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <h2 style="font-size: 30px;">Budget Buddy</h2>
+    <hr>
+    </hr>
+
+    <div class="list">
+      <ul>
+        <li><a href="dash.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-chart-pie"></i>
+            Dashboard</a></li>
+        <li><a href="accounts.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-building-columns"></i> Accounts</a></li>
+        <li><a href="transactions.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-arrow-right-arrow-left"></i> Transactions</a></li>
+        <li><a href="cat.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-tags"></i>
+            Categories</a></li>
+        <li class="active"><a href="budget.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-bullseye"></i>
+            Budgets</a></li>
+        <li><a href="goal.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-flag"></i> Goals</a>
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <div class="user-info">
+      <div class="left-column">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+      </div>
+      <div class="user-details">
+        <p><span id="username"></span></p>
+        <p><span id="email"></span></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Budgets</h1>
+      <button id="newTransactionBtn" class="btn">+ New Transaction</button>
+
+    </div>
+
+    <div class="youracc">
+      <h2>Your Budget</h2>
+      <button id="newAccountBtn" class="btn">+ New Budget</button>
+    </div>
+  </div>
+
+
+  <!-- Transaction Modal -->
+  <div id="transactionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add New Transaction</h2>
+      <form id="transactionForm">
+        <label>Date:</label>
+        <input type="date" name="date" required />
+
+        <label>Description:</label>
+        <input type="text" name="description" required />
+
+        <label>Category:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Select category</option>
+        </select>
+
+        <label for="account">Account</label>
+        <select id="account" name="account" required>
+          <option value="" disabled selected>Select account</option>
+        </select>
+
+
+        <label>Amount:</label>
+        <input type="number" name="amount" step="0.01" required />
+
+        <label>Type:</label>
+        <select name="type" required>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Add Transaction</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Budget Modal -->
+  <div id="budgetModal" class="modal">
+    <div class="modal-content">
+      <span class="close-budget">&times;</span>
+      <h2>Add New Budget</h2>
+      <form id="budgetForm">
+        <label>Month:</label>
+        <input type="month" name="month" id="month" required>
+
+        <label>Category:</label>
+        <select id="budget-category" name="category" required>
+          <option value="" disabled selected>Select category</option>
+        </select>
+
+        <label>Total Budget:</label>
+        <input type="number" name="total" required />
+
+        <label>Color:</label>
+        <input type="color" name="color" value="#4caf50" />
+
+        <button type="submit" class="submit-btn">Add Budget</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="budgetAlertModal" class="modal-alert">
+    <div class="modal-content-alert">
+      <span class="close-alert">&times;</span>
+      <p id="alertMessage"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="budget.js"></script>
+</body>
+
+</html>

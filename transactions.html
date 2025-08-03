@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions</title>
+    <link rel="stylesheet" href="transactions.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2 style="font-size: 30px;">Budget Buddy</h2>
+        <hr>
+        </hr>
+
+        <div class="list">
+            <ul>
+                <li><a href="dash.html" style="text-decoration: none; color: white;"><i
+                            class="fa-solid fa-chart-pie"></i>
+                        Dashboard</a></li>
+                <li><a href="accounts.html" style="text-decoration: none; color: white;"><i
+                            class="fa-solid fa-building-columns"></i> Accounts</a></li>
+                <li class="active"><a href="transactions.html" style="text-decoration: none; color: white;"><i
+                            class="fa-solid fa-arrow-right-arrow-left"></i> Transactions</a></li>
+                <li><a href="cat.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-tags"></i>
+                        Categories</a></li>
+                <li><a href="budget.html" style="text-decoration: none; color: white;"><i
+                            class="fa-solid fa-bullseye"></i> Budgets</a></li>
+                <li><a href="goal.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-flag"></i>
+                        Goals</a></li>
+            </ul>
+        </div>
+        <hr>
+
+        <div class="user-info">
+            <div class="left-column">
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <button class="logout-btn" onclick="logout()">Log Out</button>
+            </div>
+
+            <div class="user-details">
+                <p><span id="username"></span></p>
+                <p><span id="email"></span></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="main">
+        <div class="topbar">
+            <h1>Transactions</h1>
+            <button class="btn">+ New Transaction</button>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group"> <label for="account">Account</label> <select id="account">
+                    <option>All Accounts</option>
+                </select> </div>
+            <div class="filter-group"> <label for="category">Category</label> <select id="filter-category">
+                    <option>All Categories</option>
+                </select> </div>
+            <div class="filter-group"> <label for="type">Type</label> <select id="type">
+                    <option value="all">All Types</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="monthRange">Month</label>
+                <select id="monthRange">
+                    <option value="all">All Months</option>
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                    <tr class="row">
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Account</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="transactionBody"></tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- Transaction Modal -->
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Transaction</h2>
+            <form id="transactionForm">
+                <label>Date:</label>
+                <input type="date" name="date" required />
+
+                <label>Description:</label>
+                <input type="text" name="description" required />
+
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>Select category</option>
+                </select>
+
+                <label for="account">Account</label>
+                <select id="account" name="account" required>
+                    <option value="" disabled selected>Select account</option>
+                </select>
+
+                <label>Amount:</label>
+                <input type="number" name="amount" step="0.01" required />
+
+                <label>Type:</label>
+                <select name="type" required>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+
+                <button type="submit" class="submit-btn">Add Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="transactions.js"></script>
+</body>
+</html>

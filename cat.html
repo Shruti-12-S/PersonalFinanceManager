@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories</title>
+  <link rel="stylesheet" href="cat.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="sidebar">
+    <h2 style="font-size: 30px;">Budget Buddy</h2>
+    <hr>
+    </hr>
+
+    <div class="list">
+      <ul>
+        <li><a href="dash.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-chart-pie"></i>
+            Dashboard</a></li>
+        <li><a href="accounts.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-building-columns"></i> Accounts</a></li>
+        <li><a href="transactions.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-arrow-right-arrow-left"></i> Transactions</a></li>
+        <li class="active"><a href="cat.html" style="text-decoration: none; color: white;"><i
+              class="fa-solid fa-tags"></i>
+            Categories</a></li>
+        <li><a href="budget.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-bullseye"></i>
+            Budgets</a></li>
+        <li><a href="goal.html" style="text-decoration: none; color: white;"><i class="fa-solid fa-flag"></i> Goals</a>
+        </li>
+      </ul>
+    </div>
+    <hr>
+
+    <div class="user-info">
+      <div class="left-column">
+        <div class="icon-wrapper">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <button class="logout-btn" onclick="logout()">Log Out</button>
+      </div>
+      <div class="user-details">
+        <p><span id="username"></span></p>
+        <p><span id="email"></span></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Categories</h1>
+      <button class="btn">+ New Transaction</button>
+    </div>
+
+    <div class="container">
+
+      <div class="tabs">
+        <button class="tab active" onclick="filterCategories('all')">All</button>
+        <button class="tab" onclick="filterCategories('expense')">Expenses</button>
+        <button class="tab" onclick="filterCategories('income')">Income</button>
+      </div>
+
+      <div class="categories" id="categoryList">
+        <!-- Expense Categories -->
+        <div class="card expense">
+          <span>🛒</span>
+          <h3>Groceries</h3>
+          <p>Expense</p>
+        </div>
+        <div class="card expense">
+          <span>🍽️</span>
+          <h3>Dining</h3>
+          <p>Expense</p>
+        </div>
+        <div class="card expense">
+          <span>🚗</span>
+          <h3>Transportation</h3>
+          <p>Expense</p>
+        </div>
+        <div class="card expense">
+          <span>💡</span>
+          <h3>Utilities</h3>
+          <p>Expense</p>
+        </div>
+        <div class="card expense">
+          <span>🎬</span>
+          <h3>Entertainment</h3>
+          <p>Expense</p>
+        </div>
+        <div class="card expense">
+          <span>🏥</span>
+          <h3>Health</h3>
+          <p>Expense</p>
+        </div>
+
+        <div class="card expense">
+          <span>🛍️</span>
+          <h3>Shopping</h3>
+          <p>Expense</p>
+        </div>
+
+        <!-- Income Categories -->
+        <div class="card income">
+          <span>💼</span>
+          <h3>Salary</h3>
+          <p>Income</p>
+        </div>
+        <div class="card income">
+          <span>📈</span>
+          <h3>Investments</h3>
+          <p>Income</p>
+        </div>
+        <div class="card income">
+          <span>💰</span>
+          <h3>Other Income</h3>
+          <p>Income</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Transaction Modal -->
+  <div id="transactionModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add New Transaction</h2>
+      <form id="transactionForm">
+        <label>Date:</label>
+        <input type="date" name="date" required />
+
+        <label>Description:</label>
+        <input type="text" name="description" required />
+
+        <label>Category:</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Select category</option>
+        </select>
+
+        <label for="account">Account</label>
+        <select id="account" name="account" required>
+          <option value="" disabled selected>Select account</option>
+        </select>
+
+        <label>Amount:</label>
+        <input type="number" name="amount" step="0.01" required />
+
+        <label>Type:</label>
+        <select name="type" required>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <button type="submit" class="submit-btn">Add Transaction</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="cat.js"></script>
+</body>
+</html>
